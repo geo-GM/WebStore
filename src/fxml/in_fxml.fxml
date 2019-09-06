@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.*?> 
+<?import javafx.collections.*?>
+<?import main.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.SaleController">
+    <children>
+        <VBox>
+            <children>
+                <HBox alignment="TOP_RIGHT">
+                    <children>
+                        <Button mnemonicParsing="false" text="Close" onAction="#closeForm"/>
+                    </children>
+                </HBox>
+                <Label text="Buy new internet package" />
+                <TextField fx:id="firstName"  promptText="First name" />
+                <TextField fx:id="lastName"  promptText="Last name" />
+                <TextField fx:id="address"  promptText="Address" />
+                
+                <Label text="Select internet flow" />
+                <ChoiceBox fx:id="netFlow"  value="1 GB">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="1 GB" />
+                            <String fx:value="5 GB" />
+                            <String fx:value="10 GB" />
+                            <String fx:value="100 GB" />
+                            <String fx:value="Flat" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+                
+                <Label text="Select internet speed" />
+                <ChoiceBox fx:id="netSpeed"  value="2 Mbit">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="2 Mbit" />
+                            <String fx:value="5 Mbit" />
+                            <String fx:value="10 Mbit" />
+                            <String fx:value="20 Mbit" />
+                            <String fx:value="50 Mbit" />
+                            <String fx:value="100 Mbit" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+                <HBox fillHeight="true" >
+                    <children>
+                        
+                        <RadioButton fx:id="one" mnemonicParsing="false" text="One year" >
+                            
+                            <toggleGroup>
+                                <ToggleGroup fx:id="contractDurration" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="two" mnemonicParsing="false" text="Two years" toggleGroup="$contractDurration" />
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_RIGHT">
+                    <children>
+                        <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveSale" text="Save" />
+                        <Button fx:id="clearBtn" mnemonicParsing="false" onAction="#clearSale" text="Clear" />
+                        <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#deleteSale" text="Delete" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <!-- SAVE + LIST -->
+        <Pane>
+            <TableView fx:id="tabela">
+                <columns>
+                    <TableColumn text="First Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="firstName" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Last Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="lastName" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Address">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="address" />
+                        </cellValueFactory>                        
+                    </TableColumn>
+                    <TableColumn text="Net Speed">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="netSpeed" />
+                        </cellValueFactory>                        
+                    </TableColumn>
+                    <TableColumn text="Net Flow">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="netFlow" />
+                        </cellValueFactory>                        
+                    </TableColumn>
+                    <TableColumn text="Contract durration">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="contractDurration" />
+                        </cellValueFactory>                        
+                    </TableColumn>
+                    <TableColumn text="Contract ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="contractID" />
+                        </cellValueFactory>                        
+                    </TableColumn>
+                </columns>
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <Sale firstName="Gorana" lastName="Matuh" address="Nova adresa 21" netSpeed="100 Mbit" netFlow="1 GB" contractDurration="Two years" contractID="1" />
+                        <Sale firstName="Edin" lastName="Juric" address="Zagrebacka 6" netSpeed="100 Mbit" netFlow="5 GB" contractDurration="One year" contractID="2"  />
+                        <Sale firstName="Dario" lastName="Vilic" address="Beogradska 9" netSpeed="100 Mbit" netFlow="1 GB" contractDurration="One year" contractID="3"  />
+                        <Sale firstName="Esma" lastName="Sarajlic" address="Sarajevska 12" netSpeed="100 Mbit" netFlow="10 GB" contractDurration="Two years" contractID="4" />
+                    </FXCollections>
+                </items>
+            </TableView>
+        </Pane>
+    </children>
+</HBox>
