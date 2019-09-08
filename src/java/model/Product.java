@@ -66,7 +66,7 @@ public class Product {
         StringBuilder all_products = new StringBuilder();
         Class.forName("com.mysql.jdbc.Driver");
 
-        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", "itAkademija!1");) {
+        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", " ");) {
             Statement st = conn.createStatement();
             st.executeQuery("select product_id, p_name, description, price, customer_id, sell from products");
             ResultSet rs = st.getResultSet();
@@ -96,7 +96,7 @@ public class Product {
     public void insertProducts() throws ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
 
-        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", "itAkademija!1");) {
+        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", " ");) {
             if (p_name != null && !(p_name.isEmpty()) && description != null && !(description.isEmpty()) && price != 0) {
                 Statement st = conn.createStatement();
                 st.execute("insert into products (p_name,description, price) values ('" + p_name + "','" + description + "','"+ price+ "')");
@@ -108,7 +108,7 @@ public class Product {
 
     public void deleteProducts() throws ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
-        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", "itAkademija!1");) {
+        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", " ");) {
             if (product_id != 0 || p_name != null || !(p_name.isEmpty()) || description != null || !(description.isEmpty()) || price != 0) {
                 Statement st = conn.createStatement();
 
@@ -124,7 +124,7 @@ public class Product {
 
     public void updateProducts() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", "itAkademija!1");) {
+        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", " ");) {
             if (product_id != 0 && p_name != null && !(p_name.isEmpty()) && price != 0 && description != null && !(description.isEmpty())) {
                 Statement st = conn.createStatement();
                 st.execute("update products set p_name= '" + p_name + "', price= '" + price + "', description ='" + description + "' where product_id = '" + product_id + "'");
