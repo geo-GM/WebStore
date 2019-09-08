@@ -57,7 +57,7 @@ public class Sale {
     StringBuilder all_sale = new StringBuilder();
     Class.forName("com.mysql.jdbc.Driver");
     
-    try(java.sql.Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", "itAkademija!1");){
+    try(java.sql.Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", " ");){
     Statement st = conn.createStatement();
     st.executeQuery("select sale_id, customer_id, product_id, sold from sale");
     ResultSet rs = st.getResultSet();
@@ -80,7 +80,7 @@ public class Sale {
     
     public void soldProduct() throws ClassNotFoundException, SQLException{
     Class.forName("com.mysql.jdbc.Driver");
-    try(java.sql.Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", "itAkademija!1");){
+    try(java.sql.Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", " ");){
 
     if (s_customer_id != 0 && s_product_id != 0) {
                 Statement st = conn.createStatement();
