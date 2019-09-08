@@ -77,7 +77,7 @@ public class Customer {
     StringBuilder all_customers = new StringBuilder();
     Class.forName("com.mysql.jdbc.Driver");
     
-    try(java.sql.Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", "itAkademija!1");){
+    try(java.sql.Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", " ");){
     Statement st = conn.createStatement();
     st.executeQuery("select customer_id, name, age, address, product_id, sell from customer");
     ResultSet rs = st.getResultSet();
@@ -106,7 +106,7 @@ public class Customer {
     public void insertCustomer() throws ClassNotFoundException{
     Class.forName("com.mysql.jdbc.Driver");
     
-    try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", "itAkademija!1");){
+    try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", " ");){
     if (name != null&& !(name.isEmpty()) ){
     Statement st = conn.createStatement();
     st.execute("insert into customer (name,age, address) values ('" + name + "','" + age + "','"+ address+ "')");
@@ -118,7 +118,7 @@ public class Customer {
     
     public void delete() throws ClassNotFoundException{
     Class.forName("com.mysql.jdbc.Driver");
-        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", "itAkademija!1");) {
+        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", " ");) {
             if (id!=0) {
                 Statement st = conn.createStatement();
                
@@ -134,7 +134,7 @@ public class Customer {
     
     public void update() throws ClassNotFoundException, SQLException{
     Class.forName("com.mysql.jdbc.Driver");
-        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", "itAkademija!1");) {
+        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/store?serverTimezone=UTC&useSSL=false", "root", " ");) {
             if(id!=0 && name!= null && !(name.isEmpty())&& age!=0 && address!= null&& !(address.isEmpty())){
             Statement st = conn.createStatement();
             st.execute("update customer set name= '"+ name+ "', age= '" + age+ "', address ='"+ address + "' where customer_id = '"+ id+"'");
